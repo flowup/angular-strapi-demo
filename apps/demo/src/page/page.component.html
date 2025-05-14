@@ -1,0 +1,28 @@
+ℹ️ Page with slug <code>{{ slug() }}</code> rendered below
+<fieldset>
+  <label for="terms">
+    <input type="checkbox" [(ngModel)]="isPreview" />
+    Live content preview is
+    <strong>
+      @if (isPreview()) {
+        <span style="color: limegreen">enabled</span>
+      } @else {
+        <span style="color: gray">disabled</span>
+      }
+    </strong>
+  </label>
+</fieldset>
+
+<hr />
+
+@if (pageResource.value(); as page) {
+  <h1>{{ page.title }}</h1>
+  <hr />
+  @if (page.body) {
+    <article
+      [innerHTML]="page.body | markdownToHtml | async | bypass"
+    ></article>
+  } @else {
+    <p>📝 This page has no body text to display</p>
+  }
+}

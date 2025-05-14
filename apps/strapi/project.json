@@ -1,0 +1,17 @@
+{
+  "name": "strapi",
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
+  "projectType": "application",
+  "prefix": "app",
+  "sourceRoot": "apps/strapi/src",
+  "tags": [],
+  "targets": {
+    "serve": {
+      "executor": "nx:run-commands",
+      "options": {
+        "command": "strapi develop",
+        "cwd": "apps/strapi"
+      }
+    }
+  }
+}
